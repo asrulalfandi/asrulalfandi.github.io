@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak - Aseul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Modern Header */
+    header {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, #0a0f2c, #1a1f3c);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(15, 241, 206, 0.1);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(15, 241, 206, 0.1) 0%, transparent 50%);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: #0ff1ce;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #0ff1ce, #00c9ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient 3s ease infinite;
+      font-weight: 700;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header p {
+      font-size: 1.25rem;
+      max-width: 40rem;
+      margin: 0 auto 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Profile Image */
+    .profile-img {
+      width: 12rem;
+      height: 12rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0ff1ce;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 255, 255, 0.3);
+      margin: 0 auto 2rem;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 1rem 2rem rgba(0, 255, 255, 0.4);
+    }
+
+    /* Social Media Links */
+    .sosmed-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .sosmed-links a {
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26, 31, 60, 0.8);
+      border-radius: 50%;
+      color: #0ff1ce;
+      font-size: 1.6rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(15, 241, 206, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sosmed-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(15, 241, 206, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .sosmed-links a:hover {
+      transform: scale(1.1) translateY(-0.5rem);
+      background: #0ff1ce;
+      color: #0a0f2c;
+      box-shadow: 0 0.8rem 1.5rem rgba(0, 255, 255, 0.3);
+    }
+
+    .sosmed-links a:hover::before {
+      left: 100%;
+    }
+
+    /* Contact Form */
+    .contact-form-section {
+      margin: 4rem auto;
+      padding: 3rem;
+      max-width: 50rem;
+      background: rgba(26, 31, 60, 0.6);
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(15, 241, 206, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-form-section h2 {
+      color: #0ff1ce;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .contact-form-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5rem;
+      height: 0.2rem;
+      background: #0ff1ce;
+      border-radius: 0.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(15, 241, 206, 0.3);
+      background: rgba(10, 15, 40, 0.8);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #0ff1ce;
+      box-shadow: 0 0 0 3px rgba(15, 241, 206, 0.2);
+    }
+
+    .submit-btn {
+      background: linear-gradient(90deg, #0ff1ce, #00c9ff);
+      color: #0a0f2c;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-0.2rem);
+      box-shadow: 0 0.5rem 1rem rgba(15, 241, 206, 0.3);
+    }
+
+    /* Map Section */
+    .map-section {
+      margin: 4rem auto;
+      padding: 3rem 2rem;
+      max-width: 60rem;
+      background: rgba(26, 31, 60, 0.6);
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(15, 241, 206, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .map-section h2 {
+      color: #0ff1ce;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .map-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5rem;
+      height: 0.2rem;
+      background: #0ff1ce;
+      border-radius: 0.2rem;
+    }
+
+    .map-section p {
+      text-align: center;
+      max-width: 40rem;
+      margin: 0 auto 2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .map-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 255, 255, 0.1);
+      border: 3px solid #0ff1ce;
+      transition: all 0.3s ease;
+    }
+
+    .map-container:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 1rem 2rem rgba(0, 255, 255, 0.2);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 25rem;
+      border: none;
+    }
+
+    /* Contact Info */
+    .contact-info-section {
+      margin: 4rem auto;
+      padding: 3rem 2rem;
+      max-width: 60rem;
+      background: rgba(26, 31, 60, 0.6);
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(15, 241, 206, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info-card {
+      padding: 1.5rem;
+      background: rgba(10, 15, 40, 0.5);
+      border-radius: 0.5rem;
+      border: 1px solid rgba(15, 241, 206, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 0.5rem 1rem rgba(0, 255, 255, 0.2);
+    }
+
+    .contact-info-card i {
+      font-size: 2rem;
+      color: #0ff1ce;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info-card h3 {
+      color: #0ff1ce;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-info-card p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+/* Container untuk semua komentar */
+#comments {
+  margin-top: 2rem;
+}
+
+/* Card komentar */
+.comment {
+  background-color: #0a1a2f; /* deep navy */
+  border: 1px solid #38bdf8; /* neon cyan border */
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); /* cyan glow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Animasi hover */
+.comment:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+}
+
+/* Nama user */
+.comment strong {
+  display: block;
+  color: #38bdf8; /* neon cyan */
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Pesan */
+.comment p {
+  color: #dbeafe; /* soft light blue (nyaman di dark) */
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Animasi masuk */
+.comment {
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Batasi tinggi area komentar + enable scroll */
+#comments {
+  max-height: 300px; /* atur sesuai kebutuhan, bisa 400px misal */
+  overflow-y: auto;
+  padding-right: 5px;
+  border-radius: 10px;
+}
+
+/* Custom scrollbar untuk Webkit (Chrome, Edge, Safari) */
+#comments::-webkit-scrollbar {
+  width: 8px;
+}
+
+#comments::-webkit-scrollbar-track {
+  background: #0a1a2f; /* warna background track scrollbar */
+  border-radius: 10px;
+}
+
+#comments::-webkit-scrollbar-thumb {
+  background: #38bdf8; /* warna thumb scrollbar (neon cyan) */
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+}
+
+/* Firefox scrollbar */
+#comments {
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 #0a1a2f;
+}
+.comment {
+  display: flex;
+  align-items: flex-start;
+  background-color: #0a1a2f;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.comment-avatar {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  margin-right: 12px;
+}
+
+.comment-content {
+  color: #cbd5e1;
+}
+
+.comment-content strong {
+  display: block;
+  font-size: 16px;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: #0a0f2c;
+      color: rgba(255, 255, 255, 0.7);
+      border-top: 1px solid rgba(15, 241, 206, 0.1);
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 0.1rem;
+      background: linear-gradient(90deg, transparent, #0ff1ce, transparent);
+    }
+
+    #live-clock {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      display: inline-block;
+      background: rgba(15, 241, 206, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      color: #0ff1ce;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      .profile-img {
+        width: 10rem;
+        height: 10rem;
+      }
+      
+      .sosmed-links a {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.4rem;
+      }
+      
+      .map-container iframe {
+        height: 20rem;
+      }
+
+      .contact-form-section {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .map-section h2,
+      .contact-form-section h2 {
+        font-size: 1.6rem;
+      }
+      
+      .map-container iframe {
+        height: 15rem;
+      }
+
+      .contact-info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+.copyright {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <i class="fas fa-code"></i>
+        <span>Asrul</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="contacts.html" class="nav-link active">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="contact-container">
+    <header data-aos="fade-up">
+        <!-- h1 dibawah agar tidak ngebug cuy -->
+        <h1>‎ ‎ ‎ ‎ ‎ ‎ </h1>
+        <h1>‎ ‎ ‎ ‎ ‎ ‎ ‎ </h1>
+      <img src="img/contacts.jpg" alt="Contact Me" class="profile-img" />
+      <h1>Hubungi Saya 📬</h1>
+      <p>Jangan ragu untuk menghubungi saya melalui salah satu saluran berikut:</p>
+
+      <div class="sosmed-links" data-aos="zoom-in">
+        <a href="https://wa.me/628871772190" title="WhatsApp" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/asrulmantap21" title="Instagram" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@arulitsme" title="TikTok" target="_blank" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://t.me/CARLITO" title="Telegram" target="_blank" aria-label="Telegram">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://ngl.link/asrulbandalam" title="NGL" target="_blank" aria-label="NGL">
+          <i class="fas fa-link"></i>
+        </a>
+        <a href="mailto:asrulesdeh@gmail.com" title="Email" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </header>
+
+    <section class="contact-info-section" data-aos="fade-up">
+      <h2>📱 Informasi Kontak</h2>
+      <div class="contact-info-grid">
+        <div class="contact-info-card">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>+62 887-1772-190</p>
+          <a href="https://wa.me/628871772190" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">Chat Sekarang</a>
+        </div>
+        <div class="contact-info-card">
+          <i class="fab fa-instagram"></i>
+          <h3>Instagram</h3>
+          <p>@asrulmantap21</p>
+          <a href="https://www.instagram.com/asrulmantap21" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">Kunjungi Profil</a>
+        </div>
+        <div class="contact-info-card">
+          <i class="fab fa-telegram"></i>
+          <h3>Telegram</h3>
+          <p>@CARLITO</p>
+          <a href="https://t.me/CARLITO" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">Kirim Pesan</a>
+        </div>
+        <div class="contact-info-card">
+          <i class="fas fa-link"></i>
+          <h3>NGL Link</h3>
+          <p>ngl.link/asrulbandalam</p>
+          <a href="https://ngl.link/asrulbandalam" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">Kirim Pesan Anonim</a>
+        </div>
+          <form id="commentForm" class="contact-form">
+              <h3>Komentar</h3>
+  <div class="form-group">
+    <input type="text" id="name" placeholder="Your Name" required>
+  </div>
+  <div class="form-group">
+    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">
+    <i class="fas fa-paper-plane"></i> Send Message
+  </button>
+</form>
+<div id="comments" class="comments-list"></div>
+      </div>
+    </section>
+
+     
+    
+
+    <section class="map-section" data-aos="fade-up">
+      <h2>📍 Lokasi Saya</h2>
+      <p>Saya tinggal di Bekasi, Jawa Barat, Indonesia.</p>
+      <div class="map-container">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+      <div id="live-clock">🕒 <span id="time"></span> (WIB)</div>
+  <p class="copyright">
+          © 2025 Asrul Alfandi. All rights reserved.
+        </p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const firebaseConfig = {
+      apiKey: "AIzaSyByoMCNpjXoc_2cnl9B8-6C3hihQMU2x6U",
+      authDomain: "realkomen-c43aa.firebaseapp.com",
+      projectId: "realkomen-c43aa"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const form = document.getElementById("commentForm");
+    const nameInput = document.getElementById("name");
+    const messageInput = document.getElementById("message");
+    const commentsDiv = document.getElementById("comments");
+
+    if (!form || !nameInput || !messageInput || !commentsDiv) {
+      console.error("Elemen form atau komentar tidak ditemukan di halaman.");
+      return;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !message) return;
+
+      await db.collection("comments").add({
+        name,
+        message,
+        timestamp: new Date(),
+      });
+
+      form.reset();
+      
+    });
+
+    db.collection("comments")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        commentsDiv.innerHTML = "";
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          const div = document.createElement("div");
+          div.className = "comment";
+          div.innerHTML = `
+            <div class="comment-avatar"><i class="fas fa-user"></i></div>
+            <div class="comment-content">
+              <strong>${data.name}</strong>
+              <p>${data.message}</p>
+            </div>
+          `;
+          commentsDiv.appendChild(div);
+        });
+      });
+  });
+</script>
+  <style>
+    /* Chatbot Toggle Button */
+    #chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: #00dfc4;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 223, 196, 0.6);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: background 0.3s ease;
+    }
+    #chatbot-toggle:hover {
+      background: #00b39c;
+    }
+    #chatbot-toggle i {
+      font-size: 40px;
+      fill: #0a1a2f;
+      color: black;
+    }
+
+    /* Chatbot Container */
+    #chatbot-container {
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      width: 320px;
+      max-width: 90vw;
+      background: #1e1e2f;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 223, 196, 0.4);
+      display: none;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      color: #dbeafe;
+      z-index: 9998;
+      overflow: hidden;
+    }
+
+    #chatbot-header {
+      padding: 14px 18px;
+      background: #121224;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #00dfc4;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #chatbot-close-btn {
+      cursor: pointer;
+      font-size: 20px;
+      color: #00dfc4;
+      background: transparent;
+      border: none;
+    }
+    #chatbot-close-btn:hover {
+      color: #00b39c;
+    }
+
+    #chatbot-output {
+      flex-grow: 1;
+      padding: 14px 18px;
+      overflow-y: auto;
+      max-height: 280px;
+      background: #0a1a2f;
+      font-size: 14px;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-message {
+      display: flex;
+      gap: 10px;
+      max-width: 100%;
+    }
+    .chat-message.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .chat-message.bot {
+      align-self: flex-start;
+    }
+
+    .chat-avatar {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #00dfc4;
+      box-shadow: 0 0 8px rgba(0, 223, 196, 0.7);
+    }
+
+    .chat-text {
+      background: #121224;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #dbeafe;
+      box-shadow: 0 0 10px rgba(0, 223, 196, 0.3);
+      word-wrap: break-word;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      box-sizing: border-box;
+    }
+    .chat-message.user .chat-text {
+      background: #00dfc4;
+      color: #0a1a2f;
+      box-shadow: none;
+    }
+
+    /* Format Teks Khusus */
+    .chat-text strong {
+      font-weight: bold;
+      color: #00dfc4;
+    }
+    .chat-text em {
+      font-style: italic;
+    }
+    .chat-text a {
+      color: #00dfc4;
+      text-decoration: none;
+    }
+    .chat-text a:hover {
+      text-decoration: underline;
+    }
+    .chat-text p {
+      margin: 8px 0;
+      word-break: break-word;
+    }
+    .chat-text ul, .chat-text ol {
+      padding-left: 20px;
+      margin: 8px 0;
+      word-break: break-word;
+    }
+    .chat-text li {
+      margin-bottom: 4px;
+      word-break: break-word;
+    }
+    
+    /* Format khusus untuk list bernomor */
+    .numbered-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .numbered-item {
+      display: flex;
+      gap: 8px;
+    }
+    .number {
+      min-width: 20px;
+      font-weight: bold;
+      color: #00dfc4;
+    }
+
+    /* Kotak Kode dengan Tombol Salin */
+    .code-container {
+      position: relative;
+      margin: 10px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 100%;
+    }
+    
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: #2d2d40;
+      color: #dbeafe;
+      font-size: 13px;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: #00dfc4;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+    
+    .copy-btn:hover {
+      color: #00b39c;
+    }
+    
+    pre {
+      background: #0a1a2f;
+      padding: 12px;
+      margin: 0;
+      overflow-x: auto;
+      font-size: 13px;
+      font-family: 'Courier New', monospace;
+      border-radius: 0 0 8px 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      word-break: break-all;
+      box-sizing: border-box;
+    }
+    
+    code {
+      color: #dbeafe;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    /* Input Area */
+    #chatbot-input-area {
+      display: flex;
+      padding: 14px 18px;
+      border-top: 1px solid rgba(0, 223, 196, 0.3);
+      gap: 12px;
+      background: #121224;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+    }
+    #chatbot-input {
+      flex-grow: 1;
+      padding: 12px 16px;
+      background: #1e1e2f;
+      border: none;
+      border-radius: 12px;
+      color: #dbeafe;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    #chatbot-input::placeholder {
+      color: #64748b;
+    }
+    #chatbot-input:focus {
+      border: 2px solid #00dfc4;
+    }
+    #chatbot-send-btn {
+      background: #00dfc4;
+      border: none;
+      padding: 0 16px;
+      border-radius: 12px;
+      color: #0a1a2f;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease;
+      font-size: 18px;
+    }
+    #chatbot-send-btn:hover {
+      background: #00b39c;
+    }
+
+    /* Loading Animation */
+    @keyframes typing {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #00dfc4;
+      border-radius: 50%;
+      animation: typing 1.5s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(1) { animation-delay: 0s; }
+    .typing-dot:nth-child(2) { animation-delay: 0.3s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.6s; }
+    
+    /* Feedback saat menyalin kode */
+    .copy-success {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00dfc4;
+      color: #0a1a2f;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+    
+    .copy-success.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Feedback saat menyalin kode -->
+  <div class="copy-success" id="copy-success">Kode berhasil disalin! <i class="fas fa-check"></i></div>
+  
+  <!-- Tombol Toggle Chatbot -->
+  <div id="chatbot-toggle" role="button" aria-label="Buka chat AI" tabindex="0">
+   <i class="fa fa-commenting"></i>
+  </div>
+
+  <!-- Container Chatbot -->
+  <div id="chatbot-container" role="region" aria-live="polite" aria-label="Chatbot AI">
+    <div id="chatbot-header">
+      Chat AI Asrul.ai
+      <button id="chatbot-close-btn" aria-label="Tutup chat AI">&times;</button>
+    </div>
+    <div id="chatbot-output" aria-live="polite" aria-atomic="false"></div>
+    <div id="chatbot-input-area">
+      <input id="chatbot-input" type="text" placeholder="Tanyakan apa saja..." aria-label="Masukkan pesan"/>
+      <button id="chatbot-send-btn" aria-label="Kirim pesan">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Konteks Website & Prompt AI
+    const konteksWebsite = `Kamu adalah asisten AI khusus untuk website bernama "Asrul" yang dibuat oleh Asrul Sarmin yang lahir pada tanggal 6november2007, seorang pelajar di SMA Negeri 80 Jakarta. Asrul berasal dari Jakarta dan sangat antusias di bidang teknologi sejak kecil.
+sosmed:
+wa: 0881025706927
+ig: @4ry4p1w
+github: @Asrul
+tiktok: pitikantropuserektus 
+
+Profil Asrul:
+- Nama lengkap: Asrul Sarmin (panggilan online: Asrul)
+- Tempat tinggal: Jakarta, Indonesia
+- tanggal lahir: 06-11-2007
+- Sekolah: SMA Negeri 80 Jakarta
+- Kelas saat ini: XI-C
+- Kontak yang tersedia di website: email, akun sosial media aktif di Instagram, Telegram
+- Minat dan fokus utama: teknologi, pemrograman, robotika, pengembangan bot WhatsApp dan Telegram, website, serta tools berbasis Python
+- Aktif di ekstrakurikuler robotika di sekolah, menguasai komponen seperti Arduino, ESP32, dan sensor ultrasonic serta sensor suhu
+- Memiliki pengalaman mengembangkan proyek teknologi terintegrasi, seperti panel hosting menggunakan Pterodactyl
+- Filosofi belajar: "Tetap lapar akan ilmu" dan percaya bahwa usaha tidak akan mengkhianati hasil
+- Visi website: mendokumentasikan proses belajar Asrul, membagikan pengalaman, dan menginspirasi pelajar lain untuk berani berkAsrul di dunia teknologi baik hardware maupun software
+
+Isi website "Asrul":
+- Artikel, tutorial, dan dokumentasi seputar pemrograman front-end dan back-end
+- Proyek bot WhatsApp, Telegram, dan berbagai tools automatisasi menggunakan Python dan JavaScript
+- Pembahasan robotika yang meliputi komponen elektronik, sensor, dan penerapan praktisnya
+- Tips belajar teknologi dan pengembangan diri untuk pelajar dan pemula
+- Informasi tentang ekstrakurikuler robotika dan kompetisi yang diikuti
+- Blog tentang pengalaman Asrul di dunia teknologi dan pemrograman
+
+Tugas utama kamu adalah membantu pengunjung dengan jawaban yang informatif, ramah, dan mudah dipahami terutama tentang teknologi, pemrograman, robotika, dan topik yang ada di website tersebut. Gunakan bahasa Indonesia santai tapi sopan dan profesional, dengan paragraf pendek dan list bila perlu.
+
+Namun, kamu tidak dibatasi hanya menjawab seputar website saja. Bila ada pertanyaan umum atau topik lain di luar itu, kamu tetap berusaha memberikan jawaban yang jelas dan bermanfaat dengan cara yang ramah dan sopan. Kamu tetap bertanggung jawab dan menjaga kualitas jawaban, tanpa menolak menjawab dengan kalimat pembatas yang kaku.
+
+Tambahkan instruksi khusus untuk format jawaban:
+- Gunakan paragraf pendek (maksimal 3-4 kalimat per paragraf)
+- Gunakan list untuk poin-poin penting
+- Untuk kode program, gunakan blok kode dengan sintaks yang sesuai
+- Batasi panjang setiap kalimat maksimal 20 kata
+- Gunakan pemisah --- untuk bagian penting
+- jika ada tanda bintang * ubah menjadi •
+Contoh:
+Pengunjung: "Siapa Asrul?"
+Jawaban: "Asrul Alfandi adalah pelajar di SMA Negeri 1 Tarumajaya yang sangat antusias dengan teknologi dan robotika. Dia aktif mengembangkan bot WhatsApp, Telegram, dan proyek teknologi lainnya sambil berbagi ilmu melalui website ini."
+
+Pengunjung: "Bagaimana cara membuat bot Telegram dengan Node.js?"
+Jawaban: "Kamu bisa mulai dengan menggunakan library seperti Telegraf di Node.js, lalu buat bot dengan API Telegram. Pastikan kamu paham async programming dan penggunaan webhook atau polling..."
+
+Pengunjung: "Apakah Asrul mengikuti kompetisi robotika?"
+Jawaban: "Iya, Asrul aktif di ekstrakurikuler robotika di sekolah dan sedang belajar banyak tentang Arduino, ESP32, dan sensor-sensor untuk mengikuti berbagai kompetisi dan mengembangkan proyek nyata."
+
+Jangan lupa, Asrul percaya bahwa belajar teknologi itu perjalanan yang menyenangkan dan setiap tantangan bisa diatasi dengan usaha dan rasa ingin tahu yang tinggi.
+note jika ada jawaban yang berpoint angka urutin angka dari 1,2,3,4,5 dan seterusnya`;
+
+    // Elemen DOM
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const container = document.getElementById('chatbot-container');
+    const closeBtn = document.getElementById('chatbot-close-btn');
+    const input = document.getElementById('chatbot-input');
+    const sendBtn = document.getElementById('chatbot-send-btn');
+    const output = document.getElementById('chatbot-output');
+    const copySuccess = document.getElementById('copy-success');
+
+    // Event Listener untuk Toggle Chatbot
+    toggleBtn.addEventListener('click', () => {
+      container.style.display = container.style.display === 'flex' ? 'none' : 'flex';
+      if (container.style.display === 'flex') input.focus();
+    });
+    toggleBtn.addEventListener('keypress', e => {
+      if (e.key === 'Enter' || e.key === ' ') toggleBtn.click();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      container.style.display = 'none';
+    });
+
+    // Fungsi untuk Membuat Pesan
+    function buatPesan(who, text) {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('chat-message', who);
+      
+      const avatar = document.createElement('div');
+      avatar.classList.add('chat-avatar');
+      avatar.innerHTML = who === 'user' 
+        ? '<i class="fas fa-user" aria-hidden="true"></i>' 
+        : '<i class="fas fa-robot" aria-hidden="true"></i>';
+
+      const chatText = document.createElement('div');
+      chatText.classList.add('chat-text');
+      
+      if (who === 'bot') {
+        chatText.innerHTML = formatPesan(text); // Format khusus untuk bot
+      } else {
+        chatText.textContent = text; // User tetap plain text
+      }
+
+      wrapper.appendChild(avatar);
+      wrapper.appendChild(chatText);
+      return wrapper;
+    }
+
+    // Fungsi untuk Membuat Loading Animation
+    function buatLoading() {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('chat-message', 'bot');
+      
+      const avatar = document.createElement('div');
+      avatar.classList.add('chat-avatar');
+      avatar.innerHTML = '<i class="fas fa-robot" aria-hidden="true"></i>';
+
+      const chatText = document.createElement('div');
+      chatText.classList.add('chat-text');
+      
+      const typingIndicator = document.createElement('div');
+      typingIndicator.classList.add('typing-indicator');
+      typingIndicator.innerHTML = `
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      `;
+      
+      chatText.appendChild(typingIndicator);
+      wrapper.appendChild(avatar);
+      wrapper.appendChild(chatText);
+      
+      return wrapper;
+    }
+
+    // Fungsi Konversi Markdown ke HTML
+    function formatPesan(text) {
+      // Tangani blok kode dengan sintaks tertentu
+      const formattedText = text.replace(/```(\w+)?\s*([\s\S]*?)```/g, (match, lang, code) => {
+        const language = lang || '';
+        return `<div class="code-container">
+                  <div class="code-header">
+                    <span>${language}</span>
+                    <button class="copy-btn" data-code="${encodeURIComponent(code)}">
+                      <i class="fas fa-copy"></i> Salin
+                    </button>
+                  </div>
+                  <pre><code class="language-${language.toLowerCase()}">${escapeHtml(code)}</code></pre>
+                </div>`;
+      });
+      const withBulletPoints = text.replace(/\*\s(.*?)(\n|$)/g, '<ul><li>$1</li></ul>');
+      // Tangani list bernomor secara berurutan
+      let listCounter = 1;
+      const withNumberedLists = formattedText.replace(/(\d+)\.\s(.*?)(<br>|\n|$)/g, (match, num, content) => {
+        return `<div class="numbered-item">
+                  <div class="number">${listCounter++}.</div>
+                  <div class="content">${content}</div>
+                </div>`;
+      });
+      
+      // Format teks biasa
+      
+      const finalText = withNumberedLists
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // teks tebal
+        .replace(/\*(.*?)\*/g, '<em>$1</em>') // teks miring
+        .replace(/`(.*?)`/g, '<code>$1</code>') // kode inline
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>') // link
+        .replace(/\n---\n/g, '<hr style="margin: 10px 0; border: 1px solid rgba(0,223,196,0.2);">') // pemisah
+        .replace(/\n/g, '<br>'); // baris baru
+      
+      // Jika ada list bernomor, bungkus dalam container
+      if (finalText.includes('numbered-item')) {
+        return `<div class="chat-text-content">${finalText.replace(/<div class="numbered-item">/g, '<div class="numbered-list"><div class="numbered-item">')}</div>`;
+      }
+      
+      return `<div class="chat-text-content">${finalText}</div>`;
+    }
+
+    // Fungsi untuk escape HTML
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Fungsi Kirim Pesan ke AI
+    async function kirimPesan() {
+      const pesan = input.value.trim();
+      if (!pesan) return;
+
+      // Tampilkan pesan user
+      output.appendChild(buatPesan('user', pesan));
+      output.scrollTop = output.scrollHeight;
+
+      // Tampilkan loading AI
+      const loadingMsg = buatLoading();
+      output.appendChild(loadingMsg);
+      output.scrollTop = output.scrollHeight;
+
+      input.value = '';
+      input.focus();
+
+      try {
+        const balasan = await panggilGemini(konteksWebsite + "\nUser: " + pesan + "\nAI:");
+        
+        // Ganti loading dengan respons diformat
+        loadingMsg.querySelector('.chat-text').innerHTML = formatPesan(balasan.trim());
+        output.scrollTop = output.scrollHeight;
+        
+        // Tambahkan event listener untuk tombol salin
+        tambahkanListenerSalin();
+      } catch (err) {
+        loadingMsg.querySelector('.chat-text').textContent = 'Maaf, terjadi kesalahan saat memproses pesan.';
+        console.error(err);
+      }
+    }
+
+    // Event Listener untuk Kirim Pesan
+    sendBtn.addEventListener('click', kirimPesan);
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') kirimPesan();
+    });
+
+    // Fungsi untuk menambahkan event listener pada tombol salin
+    function tambahkanListenerSalin() {
+      const tombolSalin = document.querySelectorAll('.copy-btn');
+      tombolSalin.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const code = decodeURIComponent(btn.getAttribute('data-code'));
+          navigator.clipboard.writeText(code).then(() => {
+            // Tampilkan feedback
+            copySuccess.classList.add('show');
+            setTimeout(() => {
+              copySuccess.classList.remove('show');
+            }, 2000);
+          }).catch(err => {
+            console.error('Gagal menyalin kode:', err);
+          });
+        });
+      });
+    }
+
+    // Fungsi Panggil API Gemini
+    async function panggilGemini(prompt) {
+      const apiKey = "AIzaSyB68m4A_Ap2nB-QbP9EZoKjViTWb-feU8U";
+      
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ role: "user", parts: [{ text: prompt }] }],
+            generationConfig: {
+              maxOutputTokens: 500 // Batasi panjang respons
+            }
+          }),
+        }
+      );
+      
+      const data = await response.json();
+      if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+        return data.candidates[0].content.parts[0].text;
+      } else {
+        console.error("API error:", data);
+        return "Maaf, saya tidak bisa menjawab sekarang. Coba lagi nanti ya! 😊";
+      }
+    }
+    
+    // Inisialisasi chatbot dengan pesan selamat datang
+    window.addEventListener('DOMContentLoaded', () => {
+      const welcomeMsg = buatPesan('bot', `Hai! Selamat datang di website Asrul! 🟧 Saya asisten AI khusus di sini, sahabat belajarnya Asrul. Ada yang bisa saya bantu hari ini?`);
+      output.appendChild(welcomeMsg);
+      output.scrollTop = output.scrollHeight;
+    });
+  </script>
+</body>
+</html>
